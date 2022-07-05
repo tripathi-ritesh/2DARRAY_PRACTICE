@@ -1,0 +1,136 @@
+#include<iostream>
+using namespace std;
+
+void printSumRowWise(int arr[][4], int rowsize, int colsize)
+{
+	cout << "Row Wise Sum Is :";
+	for (int row = 0; row < rowsize; row++)
+	{
+		int sum = 0;
+		for (int col = 0; col < colsize; col++)
+		{
+			sum += arr[row][col];
+			
+		}
+		cout << sum<<"  ";
+	}
+	cout << endl;
+	
+}
+void printSumColWise(int arr[][4], int rowsize, int colsize)
+{
+	cout << "Col Wise Sum Is :";
+	for (int col = 0; col < colsize; col++)
+	{
+		int sum = 0;
+		for (int row = 0; row < rowsize; row++)
+		{
+			sum += arr[row][col];
+		}
+		cout << sum << "  ";
+	}
+	cout << endl;
+}
+int largestRowSum(int arr[][4], int rowsize, int colsize)
+{
+	int maxi = INT_MIN;
+	int rowIndex = -1;
+	for (int row = 0; row < rowsize; row++)
+	{
+		int sum = 0;
+		for (int col = 0; col < colsize; col++)
+		{
+			sum += arr[row][col];
+		}
+		if (sum > maxi)
+		{
+			maxi = sum;
+			rowIndex = row;
+		}
+	}
+	cout << "Largest Row Is At Index " << rowIndex << endl;
+	return maxi;
+}
+int largestColSum(int arr[][4], int rowsize, int colsize)
+{
+	int maxi = INT_MIN;
+	int colIndex = -1;
+
+	for (int col = 0; col < colsize; col++)
+	{
+		int sum = 0;
+		for (int row = 0; row < rowsize; row++)
+		{
+			sum += arr[row][col];
+		}
+		if (sum > maxi)
+		{
+			maxi = sum;
+			colIndex = col;
+		}
+	}
+	cout << "Largest Col Is At Index " << colIndex << endl;
+	return maxi;
+}
+bool searchElement(int arr[][4], int target, int rowsize, int colsize)
+{
+	for (int row = 0; row < rowsize; row++)
+	{
+		for (int col = 0; col < colsize; col++)
+		{
+			if (arr[row][col] == target)
+			{
+				return 1;
+				
+			}
+			
+		}
+	}
+	return 0;
+}
+int main()
+{
+	int arr[3][4] = { {1,2,3,4},{5,6,7,8},{9,10,11,12}} ;
+	//int size = sizeof(arr) / sizeof(arr[0][0]);//not working
+	
+	for (int row = 0; row < 3; row++)
+	{
+		
+		for (int col = 0; col < 4; col++)
+		{
+			
+			cout << arr[row][col] << "  ";
+		}
+		cout << endl;
+		
+	}
+	cout << "---------------------------------------------\n\n";
+	printSumRowWise(arr, 3, 4);
+	cout << "\n\n";
+	printSumColWise(arr, 3, 4);
+	cout << "\n\n";
+	int maxrow = largestRowSum(arr, 3, 4);
+	cout << "The Lagest Row Sum Is : " << maxrow;
+	cout << "\n\n";
+	int maxcol = largestColSum(arr, 3, 4);
+	cout << "The Lagest Col Sum Is : " << maxcol;
+	cout << "\n---------------------------------------------\n\n";
+	int target;
+	start:
+	cout << "\n Please Enter any number to search :" << endl;
+	cin >> target;
+
+	if (searchElement(arr,target,3,4))
+	{
+		cout << "Element Found |||||\n";
+		goto start;
+	}
+	else
+	{
+		cout << "Element NOT Found |||||\n";
+		goto start;
+	}
+	
+	return 0;
+
+}
