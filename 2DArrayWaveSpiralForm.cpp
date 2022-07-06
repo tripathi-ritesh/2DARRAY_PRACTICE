@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void waveForm(int arr[][4], int rowsize, int colsize)
+void waveForm(int arr[][4], int rowsize, int colsize)  //To Print given Matrix in Wave Form
 {
 	cout << "\nMatrix In WAVE FORM :\n";
 	for (int col = 0; col < colsize; col++)
@@ -24,7 +24,7 @@ void waveForm(int arr[][4], int rowsize, int colsize)
 		}
 	}
 }
-void spiralForm(int arr[][4], int rowsize, int colsize)
+void spiralForm(int arr[][4], int rowsize, int colsize)//To Print given Matrix in Spiral Form
 {
 	cout << "\nMAtrix Is In Spiral Form :\n";
 
